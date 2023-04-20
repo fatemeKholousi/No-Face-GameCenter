@@ -1,0 +1,39 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "sourceType": "module"
+  },
+  "plugins": ["unused-imports","tailwindcss"],
+  "extends": ["next/core-web-vitals",
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:tailwindcss/recommended"],
+  "rules": {
+    "react-hooks/exhaustive-deps": "off",
+    "react/display-name": "off",
+    "react/prop-types": "off",
+    "no-console": "error",
+    "no-alert": "error",
+    "no-debugger": "error",
+    "no-var": "error",
+    "no-multi-str": "error",
+    "no-dupe-keys": "error",
+    "no-duplicate-case": "error",
+    "no-empty": "error",
+    "no-else-return": "error",
+    "@typescript-eslint/no-non-null-assertion": "off",
+    "@typescript-eslint/no-unused-vars": "error",
+    "@typescript-eslint/no-empty-function": "warn",
+    "curly": "error",
+    "eqeqeq": "error",
+    "yoda": "error",
+    "no-useless-return": "error",
+    "no-negated-condition": "error",
+    "quotes": [
+      "error",
+      "single"
+    ]
+  }
+}
