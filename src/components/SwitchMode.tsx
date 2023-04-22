@@ -1,26 +1,33 @@
-import { Switch, FormControl, FormLabel, SimpleGrid } from "@chakra-ui/react";
-import React, { useState, useEffect } from "react";
+import {
+  Switch,
+  FormControl,
+  FormLabel,
+  useColorMode,
+  HStack,
+} from "@chakra-ui/react";
+import React from "react";
 
 function SwitchMode() {
-  const initialisLightMode = Boolean(
-    localStorage.getItem("isLightMode") === "false" ? false : true
-  );
+  const { colorMode, toggleColorMode } = useColorMode();
 
-  const [isLightMode, setIsLightMode] = useState<boolean>(initialisLightMode);
+  const labelStyle = {
+    "&:first-letter": {
+      textTransform: "uppercase",
+    },
+  };
 
   return (
-    <FormControl as={SimpleGrid} columns={{ base: 2, lg: 4 }}>
-      <FormLabel htmlFor="isChecked">{}</FormLabel>
+    <HStack>
       <Switch
         colorScheme="gray"
         size="md"
-        isChecked={isLightMode}
-        onChange={(e) => {
-          setIsLightMode(e.target.checked);
-          localStorage.setItem("isLightMode", e.target.checked.toString());
-        }}
+        isChecked={colorMode === "light"}
+        onChange={toggleColorMode}
       />
-    </FormControl>
+      <FormLabel htmlFor="isChecked" sx={labelStyle}>
+        {colorMode}
+      </FormLabel>
+    </HStack>
   );
 }
 
