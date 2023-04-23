@@ -1,3 +1,15 @@
-import create from './http-service'
+import apiClient from "./api-client";
 
-export default create('/api/games')
+class GameService{
+    endpoint:string;
+    constructor(endpoint:string){
+        this.endpoint=endpoint
+    }
+
+    getGameList(){
+        const controller=new AbortController()
+        const request=apiClient.get(this.endpoint,{signal:controller.signal})
+    return {request, cancel:()=>controller.abort()}
+    }
+}
+export default GameService
