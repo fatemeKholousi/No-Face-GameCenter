@@ -3,55 +3,40 @@ import {
   Image,
   Text,
   Card,
-  CardHeader,
   CardBody,
-  CardFooter,
   Heading,
   Badge,
-  Flex,
-  Stack,
-  Spacer,
+  HStack,
 } from "@chakra-ui/react";
-import { FaPlus } from "react-icons/fa";
-interface IGameCard {
-  gameCover: string;
-  supportedServices: string;
-  title: string;
-  score: string;
-  views: string;
-}
 
 function GameCard({
   gameCover,
   supportedServices,
   title = "",
-  score,
-  views,
+  playTime,
 }: IGameCard) {
   return (
     <>
       <Card maxW="sm" borderRadius="1rem" variant={"filled"} overflow="hidden">
-        <Image src={gameCover} alt="game cover" boxSize="100%" />
+        <Image src={gameCover} alt="game cover" />
         <CardBody>
-          <Flex alignItems="center">
-            <Text>{supportedServices}</Text>
-            <Spacer />
+          <HStack mb={4} justifyContent={"space-between"}>
+            <HStack wrap={"wrap"}>
+              {supportedServices.slice(0, 3).map((item, index) => (
+                <>
+                  <Text>{item.platform.name}</Text>
+                  {2 !== index && <Text>+</Text>}
+                </>
+              ))}
+            </HStack>
 
             <Badge variant="outline" colorScheme="blue">
-              {score}
+              {playTime}
             </Badge>
-          </Flex>
+          </HStack>
+
           <Heading size="md">{title}</Heading>
         </CardBody>
-        <CardFooter>
-          <Badge>
-            <Flex alignItems="center" gap={1}>
-              <FaPlus />
-              <Spacer />
-              <Text>{views}</Text>
-            </Flex>
-          </Badge>
-        </CardFooter>
       </Card>
     </>
   );
