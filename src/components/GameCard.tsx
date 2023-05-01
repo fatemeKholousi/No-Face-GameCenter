@@ -17,7 +17,13 @@ function GameCard({
 }: IGameCard) {
   return (
     <>
-      <Card maxW="sm" borderRadius="1rem" variant="filled" overflow="hidden">
+      <Card
+        width="300px"
+        maxW="sm"
+        borderRadius="1rem"
+        variant="filled"
+        overflow="hidden"
+      >
         <Image src={gameCover} alt="game cover" />
         <CardBody>
           <HStack mb={4} justifyContent={"space-between"}>
