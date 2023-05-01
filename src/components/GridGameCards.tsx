@@ -1,4 +1,4 @@
-import { SimpleGrid } from "@chakra-ui/react";
+import { HStack } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import GameService from "../services/game-service";
 import { IFetchedGameList } from "../interfaces/IFetchedGameList";
@@ -16,19 +16,24 @@ function GridGameCards() {
     gameCardsFetchedResult();
   }, []);
 
+  const getCroppedImageUrl = (url: string): string => {
+    const gameSplittedUrl = url.split("games");
+    return `${gameSplittedUrl[0]}crop/600/400/games${gameSplittedUrl[1]}`;
+  };
+
   return (
-    <SimpleGrid minChildWidth={"300px"} spacing={4} px={"2rem"}>
+    <HStack wrap="wrap" alignItems="justify-start" gap={3}>
       {cardsResult?.map((game) => (
         <>
           <GameCard
-            gameCover={game.background_image}
+            gameCover={getCroppedImageUrl(game.background_image)}
             supportedServices={game.platforms}
             title={game.name}
-            playTime={game.playtime}
+            score={game.metacritic}
           />
         </>
       ))}
-    </SimpleGrid>
+    </HStack>
   );
 }
 
