@@ -13,11 +13,11 @@ function GameCard({
   gameCover,
   supportedServices,
   title = "",
-  playTime,
+  score,
 }: IGameCard) {
   return (
     <>
-      <Card maxW="sm" borderRadius="1rem" variant={"filled"} overflow="hidden">
+      <Card maxW="sm" borderRadius="1rem" variant="filled" overflow="hidden">
         <Image src={gameCover} alt="game cover" />
         <CardBody>
           <HStack mb={4} justifyContent={"space-between"}>
@@ -29,8 +29,16 @@ function GameCard({
               ))}
             </HStack>
 
-            <Badge variant="outline" colorScheme="blue">
-              {playTime}
+            <Badge
+              variant="outline"
+              colorScheme={
+                score > 60 ? "green" : score > 40 ? "blue" : "yellow"
+              }
+              borderRadius=".25rem"
+              px=".5rem"
+              py=".1rem"
+            >
+              {score}
             </Badge>
           </HStack>
 
