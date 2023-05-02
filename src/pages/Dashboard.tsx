@@ -2,8 +2,9 @@ import React from "react";
 import SearchInput from "../components/SearchInput";
 import SwitchMode from "../components/SwitchMode";
 import Icon from "../assets/images/icon.png";
-import { HStack, Image } from "@chakra-ui/react";
+import { Flex, HStack, Image } from "@chakra-ui/react";
 import GridGameCards from "../components/GridGameCards";
+import GenreList from "../components/GenreList";
 function Dashboard() {
   return (
     <>
@@ -12,7 +13,10 @@ function Dashboard() {
         <SearchInput />
         <SwitchMode />
       </HStack>
-      <GridGameCards />
+      <Flex>
+        <GenreList />
+        <GridGameCards />
+      </Flex>
     </>
   );
 }

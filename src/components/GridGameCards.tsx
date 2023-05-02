@@ -4,16 +4,12 @@ import GameCard from "./GameCard";
 import useGame from "../hooks/useGame";
 import GameCardSkeleton from "./GameCardSkeleton";
 import GameCardContainer from "./GameCardContainer";
+import { getCroppedImageUrl } from "../assets/getCroppedImageUrl";
 
 function GridGameCards() {
   const { data: cardsResult, error, isLoading } = useGame();
 
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8];
-
-  const getCroppedImageUrl = (url: string): string => {
-    const gameSplittedUrl = url.split("games");
-    return `${gameSplittedUrl[0]}crop/600/400/games${gameSplittedUrl[1]}`;
-  };
 
   return (
     <Flex direction="column" w="100%">
