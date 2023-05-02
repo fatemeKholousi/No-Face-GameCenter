@@ -6,9 +6,10 @@ import GameCardSkeleton from "./GameCardSkeleton";
 import GameCardContainer from "./GameCardContainer";
 
 function GridGameCards() {
-  const { gamesReult: cardsResult, error, isLoading } = useGame();
+  const { data: cardsResult, error, isLoading } = useGame();
 
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8];
+
   const getCroppedImageUrl = (url: string): string => {
     const gameSplittedUrl = url.split("games");
     return `${gameSplittedUrl[0]}crop/600/400/games${gameSplittedUrl[1]}`;
