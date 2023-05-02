@@ -16,42 +16,32 @@ function GameCard({
   score,
 }: IGameCard) {
   return (
-    <>
-      <Card
-        width="300px"
-        maxW="sm"
-        borderRadius="1rem"
-        variant="filled"
-        overflow="hidden"
-      >
-        <Image src={gameCover} alt="game cover" />
-        <CardBody>
-          <HStack mb={4} justifyContent={"space-between"}>
-            <HStack wrap="wrap" alignItems="center">
-              {supportedServices.slice(0, 3).map((item, index) => (
-                <>
-                  <PlatformIconsList platform={item.platform} />
-                </>
-              ))}
-            </HStack>
-
-            <Badge
-              variant="outline"
-              colorScheme={
-                score > 60 ? "green" : score > 40 ? "blue" : "yellow"
-              }
-              borderRadius=".25rem"
-              px=".5rem"
-              py=".1rem"
-            >
-              {score}
-            </Badge>
+    <Card>
+      <Image src={gameCover} alt="game cover" />
+      <CardBody>
+        <HStack mb={4} justifyContent={"space-between"}>
+          <HStack wrap="wrap" alignItems="center">
+            {supportedServices.slice(0, 3).map((item, index) => (
+              <>
+                <PlatformIconsList platform={item.platform} />
+              </>
+            ))}
           </HStack>
 
-          <Heading size="md">{title}</Heading>
-        </CardBody>
-      </Card>
-    </>
+          <Badge
+            variant="outline"
+            colorScheme={score > 60 ? "green" : score > 40 ? "blue" : "yellow"}
+            borderRadius=".25rem"
+            px=".5rem"
+            py=".1rem"
+          >
+            {score}
+          </Badge>
+        </HStack>
+
+        <Heading size="md">{title}</Heading>
+      </CardBody>
+    </Card>
   );
 }
 

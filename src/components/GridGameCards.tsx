@@ -3,6 +3,7 @@ import React from "react";
 import GameCard from "./GameCard";
 import useGame from "../hooks/useGame";
 import GameCardSkeleton from "./GameCardSkeleton";
+import GameCardContainer from "./GameCardContainer";
 
 function GridGameCards() {
   const { gamesReult: cardsResult, error, isLoading } = useGame();
@@ -22,16 +23,20 @@ function GridGameCards() {
       )}
       <HStack wrap="wrap" alignItems="justify-start" gap={3}>
         {isLoading &&
-          skeletons.map((skeleton) => <GameCardSkeleton key={skeleton} />)}
+          skeletons.map((skeleton) => (
+            <GameCardContainer>
+              <GameCardSkeleton key={skeleton} />
+            </GameCardContainer>
+          ))}
         {cardsResult?.map((game) => (
-          <>
+          <GameCardContainer>
             <GameCard
               gameCover={getCroppedImageUrl(game.background_image)}
               supportedServices={game.platforms}
               title={game.name}
               score={game.metacritic}
             />
-          </>
+          </GameCardContainer>
         ))}
       </HStack>
     </Flex>
