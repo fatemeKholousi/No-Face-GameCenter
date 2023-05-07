@@ -18,7 +18,7 @@ function GridGameCards() {
           {error}
         </Text>
       )}
-      <HStack wrap="wrap" alignItems="justify-start" gap={3}>
+      <HStack wrap="wrap" justifyContent="center" gap={3}>
         {isLoading &&
           skeletons.map((skeleton) => (
             <GameCardContainer>
