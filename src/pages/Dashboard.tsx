@@ -13,7 +13,7 @@ function Dashboard() {
         <SearchInput />
         <SwitchMode />
       </HStack>
-      <Flex>
+      <Flex mt="1rem" flexDir={{ base: "column-reverse", sm: "row" }}>
         <GenreList />
         <GridGameCards />
       </Flex>
