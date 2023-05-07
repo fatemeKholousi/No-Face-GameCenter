@@ -5,9 +5,15 @@ import useGame from "../hooks/useGame";
 import GameCardSkeleton from "./GameCardSkeleton";
 import GameCardContainer from "./GameCardContainer";
 import { getCroppedImageUrl } from "../assets/getCroppedImageUrl";
+import { IFetchedGenre } from "../interfaces/IFetchedGenreList";
 
-function GridGameCards() {
-  const { data: cardsResult, error, isLoading } = useGame();
+interface IGridGameCardsProps {
+  selectedGenre: IFetchedGenre | null;
+}
+const GridGameCards: React.FC<IGridGameCardsProps> = ({
+  selectedGenre = null,
+}) => {
+  const { data: cardsResult, error, isLoading } = useGame(selectedGenre);
 
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8];
 
@@ -38,6 +44,6 @@ function GridGameCards() {
       </HStack>
     </Flex>
   );
-}
+};
 
 export default GridGameCards;

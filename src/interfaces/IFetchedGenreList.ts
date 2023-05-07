@@ -1,4 +1,4 @@
-export interface IFetchedGenreList{
+export interface IFetchedGenre{
     image_background: string;
     id: number;
     name:string;

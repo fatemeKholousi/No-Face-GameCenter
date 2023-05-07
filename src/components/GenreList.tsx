@@ -3,14 +3,27 @@ import useGenre from "../hooks/useGenres";
 import { Text, HStack, List, ListItem, Image } from "@chakra-ui/react";
 import { getCroppedImageUrl } from "../assets/getCroppedImageUrl";
 import GenreListSkeleton from "./GenreListSkeleton";
+import { IFetchedGenre } from "../interfaces/IFetchedGenreList";
 
-function GenreList() {
+export interface IGenreListProps {
+  onSelectedGenre: (genre: IFetchedGenre) => void;
+}
+
+const GenreList: React.FC<IGenreListProps> = ({ onSelectedGenre }) => {
   const { data, error, isLoading } = useGenre();
+  // if (error) return;
   if (isLoading) return <GenreListSkeleton />;
   return (
     <List>
       {data?.map((genre) => (
-        <ListItem key={genre.id} py=".25rem" px=".5rem">
+        <ListItem
+          key={genre.id}
+          py=".25rem"
+          px=".5rem"
+          onClick={() => {
+            onSelectedGenre(genre);
+          }}
+        >
           <HStack>
             <Image
               src={getCroppedImageUrl(genre.image_background)}
@@ -23,6 +36,6 @@ function GenreList() {
       ))}
     </List>
   );
-}
+};
 
 export default GenreList;
