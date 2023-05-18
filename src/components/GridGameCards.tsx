@@ -9,11 +9,18 @@ import { IFetchedGenre } from "../interfaces/IFetchedGenreList";
 
 interface IGridGameCardsProps {
   selectedGenre: IFetchedGenre | null;
+  selectedPlatform: Number | null;
 }
+
 const GridGameCards: React.FC<IGridGameCardsProps> = ({
   selectedGenre = null,
+  selectedPlatform,
 }) => {
-  const { data: cardsResult, error, isLoading } = useGame(selectedGenre);
+  const {
+    data: cardsResult,
+    error,
+    isLoading,
+  } = useGame(selectedGenre, selectedPlatform);
 
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8];
 
@@ -24,7 +31,7 @@ const GridGameCards: React.FC<IGridGameCardsProps> = ({
           {error}
         </Text>
       )}
-      <HStack wrap="wrap" justifyContent="center" gap={3}>
+      <HStack wrap="wrap" gap={3}>
         {isLoading &&
           skeletons.map((skeleton) => (
             <GameCardContainer>
