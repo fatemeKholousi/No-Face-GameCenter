@@ -19,7 +19,7 @@ const PlatformSelector: React.FC<IPlatformSelectorProps> = ({
   }, [selectedPlatform]);
 
   return (
-    <Menu size="40px">
+    <Menu>
       <MenuButton as={Button} rightIcon={<AiOutlineDown />}>
         {selectedPlatform?.name || " Select a platform"}
       </MenuButton>

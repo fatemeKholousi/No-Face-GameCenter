@@ -16,12 +16,12 @@ function GameCard({
   score,
 }: IGameCard) {
   return (
-    <Card>
+    <Card h="300">
       <Image src={gameCover} alt="game cover" />
       <CardBody>
         <HStack mb={4} justifyContent={"space-between"}>
           <HStack wrap="wrap" alignItems="center">
-            {supportedServices.slice(0, 3).map((item, index) => (
+            {supportedServices?.slice(0, 3).map((item, index) => (
               <PlatformIconsList platform={item.platform} key={index} />
             ))}
           </HStack>

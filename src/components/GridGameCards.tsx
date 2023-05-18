@@ -5,22 +5,22 @@ import useGame from "../hooks/useGame";
 import GameCardSkeleton from "./GameCardSkeleton";
 import GameCardContainer from "./GameCardContainer";
 import { getCroppedImageUrl } from "../assets/getCroppedImageUrl";
-import { IFetchedGenre } from "../interfaces/IFetchedGenreList";
+import { IGameQuery } from "../interfaces/IGameQuery";
 
 interface IGridGameCardsProps {
-  selectedGenre: IFetchedGenre | null;
-  selectedPlatform?: number | null;
+  gameQuery: IGameQuery;
 }
 
-const GridGameCards: React.FC<IGridGameCardsProps> = ({
-  selectedGenre = null,
-  selectedPlatform,
-}) => {
+const GridGameCards: React.FC<IGridGameCardsProps> = ({ gameQuery }) => {
   const {
     data: cardsResult,
     error,
     isLoading,
-  } = useGame(selectedGenre, selectedPlatform ?? null);
+  } = useGame(
+    gameQuery?.genre,
+    gameQuery?.platform || null,
+    gameQuery?.order?.key
+  );
 
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8];
 

@@ -4,7 +4,8 @@ import useData from "./useData";
 
 function useGame(
   selectedGenre: IFetchedGenre | null,
-  selectedPlatformId: Number | null
+  selectedPlatformId: number | null,
+  order: string | null
 ) {
   return useData<IFetchedGameList>(
     "/games",
@@ -12,9 +13,10 @@ function useGame(
       params: {
         genres: selectedGenre?.id,
         parent_platforms: selectedPlatformId,
+        ordering: order,
       },
     },
-    [selectedGenre?.id, selectedPlatformId]
+    [selectedGenre?.id, selectedPlatformId, order]
   );
 }
 
