@@ -17,7 +17,7 @@ function GameCard({
 }: IGameCard) {
   return (
     <Card h="300">
-      <Image src={gameCover} alt="game cover" />
+      <Image src={gameCover} />
       <CardBody>
         <HStack mb={4} justifyContent={"space-between"}>
           <HStack wrap="wrap" alignItems="center">
