@@ -9,7 +9,7 @@ import { IFetchedGenre } from "../interfaces/IFetchedGenreList";
 
 interface IGridGameCardsProps {
   selectedGenre: IFetchedGenre | null;
-  selectedPlatform: Number | null;
+  selectedPlatform?: number | null;
 }
 
 const GridGameCards: React.FC<IGridGameCardsProps> = ({
@@ -20,7 +20,7 @@ const GridGameCards: React.FC<IGridGameCardsProps> = ({
     data: cardsResult,
     error,
     isLoading,
-  } = useGame(selectedGenre, selectedPlatform);
+  } = useGame(selectedGenre, selectedPlatform ?? null);
 
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8];
 
@@ -33,13 +33,13 @@ const GridGameCards: React.FC<IGridGameCardsProps> = ({
       )}
       <HStack wrap="wrap" gap={3}>
         {isLoading &&
-          skeletons.map((skeleton) => (
-            <GameCardContainer>
+          skeletons.map((skeleton, index: number) => (
+            <GameCardContainer key={index}>
               <GameCardSkeleton key={skeleton} />
             </GameCardContainer>
           ))}
         {cardsResult?.map((game) => (
-          <GameCardContainer>
+          <GameCardContainer key={game?.id}>
             <GameCard
               gameCover={getCroppedImageUrl(game.background_image)}
               supportedServices={game.platforms}

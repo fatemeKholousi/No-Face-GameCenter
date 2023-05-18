@@ -22,9 +22,7 @@ function GameCard({
         <HStack mb={4} justifyContent={"space-between"}>
           <HStack wrap="wrap" alignItems="center">
             {supportedServices.slice(0, 3).map((item, index) => (
-              <>
-                <PlatformIconsList platform={item.platform} />
-              </>
+              <PlatformIconsList platform={item.platform} key={index} />
             ))}
           </HStack>
 

@@ -2,19 +2,20 @@ import { Button, Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import usePlatforms from "../hooks/usePlatforms";
 import { AiOutlineDown } from "react-icons/ai";
+import { IPlatform } from "../interfaces/IPlatform";
 
-interface IPlatformSelector {
-  onSelectedPlatformId: (selectedPlatform: number) => void;
+interface IPlatformSelectorProps {
+  onSelectedPlatformId: (selectedPlatform: number | null) => void;
 }
 
-const PlatformSelector: React.FC<IPlatformSelector> = ({
+const PlatformSelector: React.FC<IPlatformSelectorProps> = ({
   onSelectedPlatformId,
 }) => {
   const { data } = usePlatforms();
-  const [selectedPlatform, setSelectedPlatform] = useState<any>(null);
+  const [selectedPlatform, setSelectedPlatform] = useState<IPlatform>();
 
   useEffect(() => {
-    onSelectedPlatformId(selectedPlatform?.id);
+    if (selectedPlatform) onSelectedPlatformId(selectedPlatform?.id);
   }, [selectedPlatform]);
 
   return (
@@ -24,7 +25,10 @@ const PlatformSelector: React.FC<IPlatformSelector> = ({
       </MenuButton>
       <MenuList>
         {data?.map((platform) => (
-          <MenuItem onClick={() => setSelectedPlatform(platform)}>
+          <MenuItem
+            key={platform.id}
+            onClick={() => setSelectedPlatform(platform)}
+          >
             {platform.name}
           </MenuItem>
         ))}
