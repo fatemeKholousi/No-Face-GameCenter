@@ -26,7 +26,7 @@ const GridGameCards: React.FC<IGridGameCardsProps> = ({ gameQuery }) => {
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8];
 
   return (
-    <Flex direction="column" w="100%">
+    <Flex direction="column" w="100%" marginBottom="2rem">
       {error && (
         <Text w="100%" textAlign="center">
           {error}

@@ -3,13 +3,7 @@ import React, { ReactNode } from "react";
 
 function GameCardContainer({ children }: { children: ReactNode }) {
   return (
-    <Box
-      height="300px"
-      width="300px"
-      maxW="sm"
-      borderRadius="1rem"
-      overflow="hidden"
-    >
+    <Box height="300px" width="300px" maxW="sm" overflow="hidden">
       {children}
     </Box>
   );
