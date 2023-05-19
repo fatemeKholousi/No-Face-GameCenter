@@ -24,13 +24,13 @@ const GenreList: React.FC<IGenreListProps> = ({ onSelectedGenre }) => {
             onSelectedGenre(genre);
           }}
         >
-          <HStack>
+          <HStack cursor="pointer">
             <Image
               src={getCroppedImageUrl(genre.image_background)}
               borderRadius=".5rem"
               boxSize="32px"
             />
-            <Text>{genre.name}</Text>
+            <Text> {genre.name}</Text>
           </HStack>
         </ListItem>
       ))}

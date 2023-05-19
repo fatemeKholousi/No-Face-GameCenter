@@ -18,20 +18,23 @@ const GridGameCards: React.FC<IGridGameCardsProps> = ({ gameQuery }) => {
     isLoading,
   } = useGame(
     gameQuery?.genre,
-    gameQuery?.platform || null,
+    gameQuery?.platform?.id || null,
     gameQuery?.order?.key,
     gameQuery?.searchText
   );
 
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8];
 
+  if (error) {
+    return (
+      <Text w="100%" textAlign="center">
+        {error}
+      </Text>
+    );
+  }
+
   return (
     <Flex direction="column" w="100%" marginBottom="2rem">
-      {error && (
-        <Text w="100%" textAlign="center">
-          {error}
-        </Text>
-      )}
       <HStack wrap="wrap" gap={3}>
         {isLoading &&
           skeletons.map((skeleton, index: number) => (
