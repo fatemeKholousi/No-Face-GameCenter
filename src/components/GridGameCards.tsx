@@ -19,7 +19,8 @@ const GridGameCards: React.FC<IGridGameCardsProps> = ({ gameQuery }) => {
   } = useGame(
     gameQuery?.genre,
     gameQuery?.platform || null,
-    gameQuery?.order?.key
+    gameQuery?.order?.key,
+    gameQuery?.searchText
   );
 
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8];
