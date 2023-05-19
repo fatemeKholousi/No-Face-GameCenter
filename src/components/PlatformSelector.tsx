@@ -5,17 +5,17 @@ import { AiOutlineDown } from "react-icons/ai";
 import { IPlatform } from "../interfaces/IPlatform";
 
 interface IPlatformSelectorProps {
-  onSelectedPlatformId: (selectedPlatform: number | null) => void;
+  onSelectedPlatform: (selectedPlatform: IPlatform) => void;
 }
 
 const PlatformSelector: React.FC<IPlatformSelectorProps> = ({
-  onSelectedPlatformId,
+  onSelectedPlatform,
 }) => {
   const { data } = usePlatforms();
   const [selectedPlatform, setSelectedPlatform] = useState<IPlatform>();
 
   useEffect(() => {
-    if (selectedPlatform) onSelectedPlatformId(selectedPlatform?.id);
+    if (selectedPlatform) onSelectedPlatform(selectedPlatform);
   }, [selectedPlatform]);
 
   return (
