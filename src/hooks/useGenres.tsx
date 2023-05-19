@@ -1,8 +1,7 @@
-import { IFetchedGenre } from "../interfaces/IFetchedGenreList";
-import useData from "./useData";
+import genresList from "../data/genresListData";
 
 function useGenre() {
-  return useData<IFetchedGenre>("/genres");
+  return { data: genresList, isLoading: false, error: null };
 }
 
 export default useGenre;

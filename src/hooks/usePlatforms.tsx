@@ -1,8 +1,7 @@
-import { IPlatform } from "../interfaces/IPlatform";
-import useData from "./useData";
+import platformsListData from "../data/platformsListData";
 
 function usePlatforms() {
-  return useData<IPlatform>("/platforms/lists/parents");
+  return { data: platformsListData, isLoading: false, error: null };
 }
 
 export default usePlatforms;
