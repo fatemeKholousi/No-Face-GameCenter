@@ -14,7 +14,7 @@ function Dashboard() {
 
   return (
     <>
-      <HStack>
+      <HStack px={4}>
         <Image src={Icon} width={50} />
         <SearchInput
           onSearch={(searchText) => setGameQuery({ ...gameQuery, searchText })}
@@ -22,7 +22,7 @@ function Dashboard() {
         <SwitchMode />
       </HStack>
 
-      <Flex mt="1rem" flexDir={{ base: "column-reverse", sm: "row" }}>
+      <Flex px={4} mt="1rem" flexDir={{ base: "column-reverse", sm: "row" }}>
         <GenreList
           onSelectedGenre={(genre) => setGameQuery({ ...gameQuery, genre })}
         />
@@ -32,8 +32,12 @@ function Dashboard() {
             {gameQuery.platform?.name ?? ""} {gameQuery.genre?.name ?? ""} Games
           </Heading>
 
-          <Flex pb={4}>
-            <Box marginRight={2}>
+          <Flex
+            pb={4}
+            flexDir={{ base: "column-reverse", sm: "row" }}
+            gap={{ base: "1rem" }}
+          >
+            <Box>
               <PlatformSelector
                 onSelectedPlatform={(platform) =>
                   setGameQuery({ ...gameQuery, platform })
