@@ -22,7 +22,7 @@ function GameCard({
     <Card
       h="300px"
       border={colorMode === "dark" ? "" : "1px"}
-      borderColor="gray.200"
+      borderColor="pink.200"
       borderRadius="0.5rem"
     >
       <Image src={gameCover} borderTopRadius=".5rem" />

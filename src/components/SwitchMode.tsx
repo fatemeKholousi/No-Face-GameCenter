@@ -1,10 +1,4 @@
-import {
-  Switch,
-  FormControl,
-  FormLabel,
-  useColorMode,
-  HStack,
-} from "@chakra-ui/react";
+import { Switch, FormLabel, useColorMode, HStack } from "@chakra-ui/react";
 import React from "react";
 
 function SwitchMode() {
@@ -19,7 +13,7 @@ function SwitchMode() {
   return (
     <HStack>
       <Switch
-        colorScheme="gray"
+        colorScheme="pink"
         size="md"
         isChecked={colorMode === "light"}
         onChange={toggleColorMode}

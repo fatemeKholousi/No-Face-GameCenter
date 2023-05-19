@@ -31,7 +31,7 @@ function PlatformIconsList({
     playstation3: SiPlaystation3,
   };
 
-  return <Icon as={gamePlatformIcons[platform.slug]} color="gray" />;
+  return <Icon as={gamePlatformIcons[platform.slug]} color="pink" />;
 }
 
 export default PlatformIconsList;
