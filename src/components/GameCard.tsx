@@ -25,7 +25,7 @@ function GameCard({
       borderColor="pink.200"
       borderRadius="0.5rem"
     >
-      <Image src={gameCover} borderTopRadius=".5rem" />
+      <Image src={gameCover} borderTopRadius=".5rem" objectFit="contain" />
       <CardBody>
         <HStack mb={4} justifyContent={"space-between"}>
           <HStack wrap="wrap" alignItems="center">

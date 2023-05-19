@@ -35,7 +35,11 @@ const GridGameCards: React.FC<IGridGameCardsProps> = ({ gameQuery }) => {
 
   return (
     <Flex direction="column" w="100%" marginBottom="2rem">
-      <HStack wrap="wrap" gap={3}>
+      <HStack
+        justifyContent={{ base: "center", sm: "start" }}
+        wrap="wrap"
+        gap={3}
+      >
         {isLoading &&
           skeletons.map((skeleton, index: number) => (
             <GameCardContainer key={index}>
