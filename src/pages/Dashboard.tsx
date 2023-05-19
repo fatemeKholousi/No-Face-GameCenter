@@ -27,7 +27,7 @@ function Dashboard() {
           onSelectedGenre={(genre) => setGameQuery({ ...gameQuery, genre })}
         />
 
-        <Flex direction="column" pl={32}>
+        <Flex direction="column" pl={{ base: 0, sm: 32 }}>
           <Heading mb="1rem">
             {gameQuery.platform?.name ?? ""} {gameQuery.genre?.name ?? ""} Games
           </Heading>
@@ -44,10 +44,14 @@ function Dashboard() {
                 }
               />
             </Box>
-            <SortSelector
-              sortOrder={gameQuery?.order?.label}
-              onSelectedOrder={(order) => setGameQuery({ ...gameQuery, order })}
-            />
+            <Box>
+              <SortSelector
+                sortOrder={gameQuery?.order?.label}
+                onSelectedOrder={(order) =>
+                  setGameQuery({ ...gameQuery, order })
+                }
+              />
+            </Box>
           </Flex>
           <GridGameCards gameQuery={gameQuery} />
         </Flex>
