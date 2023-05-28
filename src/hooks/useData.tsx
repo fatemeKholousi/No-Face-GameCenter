@@ -10,7 +10,12 @@ function useData<T>(
   const { order, searchText, selectedGenre, selectedPlatformId } = dependencies;
   const { data, isLoading, error } = useQuery<T, Error>({
     queryKey: [
-      { order, searchText, selectedGenreId: selectedGenre, selectedPlatformId },
+      {
+        order,
+        searchText,
+        selectedGenreId: selectedGenre,
+        selectedPlatformId: selectedPlatformId ?? "None",
+      },
     ],
     queryFn: () =>
       apiClient
