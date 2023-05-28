@@ -28,7 +28,7 @@ const GridGameCards: React.FC<IGridGameCardsProps> = ({ gameQuery }) => {
   if (error) {
     return (
       <Text w="100%" textAlign="center">
-        {error}
+        {error?.message}
       </Text>
     );
   }
@@ -46,7 +46,7 @@ const GridGameCards: React.FC<IGridGameCardsProps> = ({ gameQuery }) => {
               <GameCardSkeleton key={skeleton} />
             </GameCardContainer>
           ))}
-        {cardsResult?.map((game) => (
+        {cardsResult?.results?.map((game) => (
           <GameCardContainer key={game?.id}>
             <GameCard
               gameCover={getCroppedImageUrl(game.background_image)}

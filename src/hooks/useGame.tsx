@@ -18,7 +18,12 @@ function useGame(
         search: searchText,
       },
     },
-    [selectedGenre?.id, selectedPlatformId, order, searchText]
+    {
+      selectedGenre: selectedGenre?.id,
+      selectedPlatformId,
+      order,
+      searchText,
+    }
   );
 }
 
